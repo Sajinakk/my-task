@@ -20,36 +20,26 @@
             document.getElementById('amt').innerHTML = q;
             document.getElementById('taxamt').innerHTML = (q * z) / 100;
             document.getElementById('ttl').innerHTML = q + r;
+            return this;
         }
 
-        function Addrow(tbl) {
-
-
+        function Addrow() {
             var table = document.getElementById("tbl");
+            var row = table.insertRow(-1);
+            var cell0 = row.insertCell(0);
+            var cell1 = row.insertCell(1);
+            var cell2 = row.insertCell(2);
+            var cell3 = row.insertCell(3);
+            var cell4 = row.insertCell(4);
+            var cell5 = row.insertCell(5);
+            cell0.innerHTML = "<input type='text' id='qty' style='border: none;'>";
+            cell1.innerHTML = "<input type='text' id='price' style='border: none;'>";
+            cell2.innerHTML = "<input type='text' id='tax' style='border: none;'>";
+            cell3.innerHTML = "<p id='amt'></p>";
+            cell4.innerHTML = "<p id='taxamt'></p>";
+            cell5.innerHTML = "<p id='ttl'></p>";
+            document.getElementById("tbl").innerHTML = Myfunction();
 
-            var rowCount = table.rows.length;
-            var row = table.insertRow(rowCount);
-
-            var colCount = table.rows[0].cells.length;
-
-            for (var i = 0; i < colCount; i++) {
-
-                var newcell = row.insertCell(i);
-
-                newcell.innerHTML = table.rows[1].cells[i].innerHTML;
-
-                switch (newcell.childNode[1].type) {
-                    case "text0":
-                        newcell.childNode[0].value = "";
-                        break;
-                    case "text1":
-                        newcell.childNode[0].value = "";
-                        break;
-                    case "text2":
-                        newcell.childNode[0].value = "";
-                        break;
-                }
-            }
         }
     </script>
 </head>
@@ -60,7 +50,7 @@
         <div class="col-md-10"><br><br><br>
             <!-- card start -->
 
-            <div class="card">
+            <div class="card" id="card">
                 <div class="card-body">
                     <!-- table starts -->
 
