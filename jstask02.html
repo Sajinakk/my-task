@@ -18,11 +18,11 @@
             var count = namearray.length;
             if ((count % 2) == 1) {
                 namearray.splice((count / 2), 1);
-
+                var na = namearray.sort();
                 var text = "";
                 var i;
-                for (i = 0; i < namearray.length; i++) {
-                    text += namearray[i] + "<br>"
+                for (i = 0; i < na.length; i++) {
+                    text += na[i] + "<br>"
                 }
 
                 document.getElementById("dis").innerHTML = text;
