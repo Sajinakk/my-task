@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Calculator</title>
+    <script>
+        $(document).ready(function() {
+            $(".btn").click(function() {
+                if ($('input').hasClass('clear')) {
+                    if ($(this).hasClass('btn')) {
+                        $('input').val('');
+                        $('input').removeClass('clear');
+                    }
+                    if ((this).hasClass('btn-act')) {
+                        $('input').removeClass('clear');
+                    }
+
+                }
+                var cur_val = $('input').val();
+                var val = $(this).data('val');
+                $('input').val(cur_val + val);
+            });
+            $(".btn-warning").click(function() {
+                $('input').val('');
+            });
+            $(".btn-res").click(function() {
+                var a = $('input').val();
+                var b = a.toString();
+                var val = b.split(" ");
+                var res = " ";
+                if (val[1] == '+') {
+                    res = parseInt(val[0]) + parseInt(val[2]);
+                }
+                if (val[1] == '-') {
+                    res = parseInt(val[0]) - parseInt(val[2]);
+                }
+                if (val[1] == '*') {
+                    res = parseInt(val[0]) * parseInt(val[2]);
+                }
+                if (val[1] == '/') {
+                    res = parseInt(val[0]) / parseInt(val[2]);
+                }
+
+                $('input').val(res.toLocaleString());
+                $('input').addClass('clear');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><br><br><br><br><br>
+            <!-- card starts -->
+
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3>
+                        <div class="col-md-12">
+                            <input type="text" id="out" readonly style="background-color: #a2af77;">
+                        </div>
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <!-- table starts -->
+
+                    <table class="table table-dark table-bordered">
+
+                        <tbody>
+                            <tr>
+
+                                <td><button class="btn btn-dark" id="num" data-val="1">1</button></td>
+                                <td><button class="btn btn-dark" id="num" data-val="2">2</button></td>
+                                <td><button class="btn btn-dark" id="num" data-val="3">3</button></td>
+                                <td><button class="btn btn-dark btn-act" id="num" data-val=" + ">+</button></td>
+                            </tr>
+                            <tr>
+
+                                <td><button class="btn btn-dark" id="num" data-val="4">4</button></td>
+                                <td><button class="btn btn-dark" id="num" data-val="5">5</button></td>
+                                <td><button class="btn btn-dark" id="num" data-val="6">6</button></td>
+                                <td><button class="btn btn-dark btn-act" id="num" data-val=" - ">-</button></td>
+                            </tr>
+                            <tr>
+
+                                <td><button class="btn btn-dark" id="num" data-val="7">7</button></td>
+                                <td><button class="btn btn-dark" id="num" data-val="8">8</button></td>
+                                <td><button class="btn btn-dark" id="num" data-val="9">9</button></td>
+                                <td><button class="btn btn-dark btn act" id="num" data-val=" * ">*</button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-dark btn-warning" id="num" data-val="c">CLEAR</button></td>
+
+                                <td><button class="btn btn-dark" id="num" data-val="0">0</button></td>
+                                <td><button class="btn-dark btn-act btn-res" id="num" data-val="=">=</button></td>
+                                <td><button class="btn btn-dark btn-num btn-act" id="num" data-val=" / ">/</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- end table -->
+                </div>
+
+            </div>
+
+
+            <!-- end card -->
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+
+</html>
