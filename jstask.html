@@ -34,7 +34,7 @@
                                 <th scope="col">Amount</th>
                                 <th scope="col">Tax Amount</th>
                                 <th scope="col">Total Amount</th>
-                                <th>operation</th>
+                                <th colspan="2">operation</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,6 +52,8 @@
                                     <p id="ttl" class="ttl"></p>
                                 </td>
                                 <td><button onclick="Myfunction()">calculate</button></td>
+                                <td><button onclick="deleteFunction()">delete</button></td>
+
                             </tr>
 
                         </tbody>
@@ -59,7 +61,7 @@
                     </table>
 
                     <td><button onclick="Addrow()">Add Row</button></td>
-                    <td><button onclick="deleteFunction()">Remove</button></td>
+
 
 
                     <!-- table close -->
@@ -98,6 +100,7 @@
         var cell4 = row.insertCell(4);
         var cell5 = row.insertCell(5);
         var cell6 = row.insertCell(6);
+        var cell7 = row.insertCell(7);
         cell0.innerHTML = "<input type='text' class='qty' style='border: none;'>";
         cell1.innerHTML = "<input type='text' class='price' style='border: none;'>";
         cell2.innerHTML = "<input type='text' class='tax' style='border: none;'>";
@@ -105,6 +108,7 @@
         cell4.innerHTML = "<p class='taxamt'></p>";
         cell5.innerHTML = "<p id='ttl' class='ttl'></p>";
         cell6.innerHTML = "<button class='calc'>Calculate</button>";
+        cell7.innerHTML = "<button class='del'>Delete</button>";
 
         $(".calc").click(function() {
 
@@ -117,10 +121,14 @@
             $(this).parents('tr').find(".taxamt").html(r);
             $(this).parents('tr').find(".ttl").html(q + r);
         });
+        $(".del").click(function() {
+            $(this).parents("tr").remove();
+
+        });
     }
 
     function deleteFunction() {
-        document.getElementById("tbl").deleteRow(-1);
+        document.getElementById("tbl").deleteRow(1);
     }
 </script>
 
