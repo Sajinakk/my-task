@@ -42,7 +42,6 @@
                                 <th><input type="text" id="qty" class="qty" style="border: none;"></th>
                                 <td><input type="text" id="price" class="price" style="border: none;"></td>
                                 <td><input type="text" id="tax" class="tax" style="border: none;"></td>
-
                                 <td>
                                     <p id="amt" class="amt"></p>
                                 </td>
@@ -60,6 +59,7 @@
                     </table>
 
                     <td><button onclick="Addrow()">Add Row</button></td>
+                    <td><button onclick="deleteFunction()">Remove</button></td>
 
 
                     <!-- table close -->
@@ -105,20 +105,24 @@
         cell4.innerHTML = "<p class='taxamt'></p>";
         cell5.innerHTML = "<p id='ttl' class='ttl'></p>";
         cell6.innerHTML = "<button class='calc'>Calculate</button>";
-        console.log(row.Length);
+
+        $(".calc").click(function() {
+
+            var x = $(this).parents('tr').find('.qty').val();
+            var y = $(this).parents('tr').find('.price').val();
+            var z = $(this).parents('tr').find('.tax').val();
+            var q = x * y;
+            var r = (q * z) / 100;
+            var s = $(this).parents('tr').find(".amt").html(q);
+            $(this).parents('tr').find(".taxamt").html(r);
+            $(this).parents('tr').find(".ttl").html(q + r);
+        });
+    }
+
+    function deleteFunction() {
+        document.getElementById("tbl").deleteRow(-1);
     }
 </script>
-<script>
-    $(".calc").click(function() {
-        var x = $(this).parent('tr').find('.qty').val();
-        var y = $(this).parent('tr').find('.price').val();
-        var z = $(this).parent('tr').find('.tax').val();
-        var q = x * y;
-        var r = (q * z) / 100;
-        $(this).parent('tr').find(".amt").innerHTML = q;
-        $(this).parent('tr').find(".taxamt").innerHTML = r;
-        $(this).parent('tr').find(".ttl").innerHTML = q + r;
-    });
-</script>
+
 
 </html>
